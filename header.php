@@ -18,14 +18,15 @@ $copam_nav_links = array(
 );
 ?>
 <!doctype html>
-<html lang="es">
+<html <?php language_attributes(); ?>>
 
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>" />
-	<meta name="description" content="COPAM S.A. - Terminal Portuario Fluvial de Yurimaguas" />
 	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/svg+xml"
-		href="<?php echo esc_url(get_template_directory_uri() . '/assets/images/favicon.svg'); ?>" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="icon" type="image/x-icon"
+		href="<?php echo esc_url(get_template_directory_uri() . '/assets/images/favicon.ico'); ?>" />
 	<?php wp_head(); ?>
 </head>
 
@@ -34,9 +35,8 @@ $copam_nav_links = array(
 
 	<header id="main-header" class="site-header">
 		<div class="site-header__inner">
-			<a href="#inicio" class="site-logo">
-				<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/LOGO COPAM.png'); ?>"
-					alt="COPAM Logo" />
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo">
+				<?php copam_render_logo( 32 ); ?>
 			</a>
 
 			<button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
@@ -46,34 +46,25 @@ $copam_nav_links = array(
 				</svg>
 			</button>
 
-			<ul id="main-nav" class="main-nav hidden">
-				<?php foreach ($copam_nav_links as $link): ?>
-					<li><a href="<?php echo esc_url($link['href']); ?>"><?php echo esc_html($link['label']); ?></a></li>
-				<?php endforeach; ?>
+			<nav aria-label="Principal">
+				<ul id="main-nav" class="main-nav hidden">
+					<?php foreach ($copam_nav_links as $link): ?>
+						<li><a href="<?php echo esc_url($link['href']); ?>"><?php echo esc_html($link['label']); ?></a></li>
+					<?php endforeach; ?>
 
-				<li class="nav-cta-mobile">
-					<a href="#seguimiento" class="btn-tracking">
-						<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-							<path d="M1 3.5h12v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-8z" stroke="white" stroke-width="1.3">
-							</path>
-							<path d="M1 3.5l6 4 6-4" stroke="white" stroke-width="1.3"></path>
-							<path d="M4 1h6" stroke="white" stroke-width="1.3" stroke-linecap="round"></path>
-							<circle cx="10.5" cy="3.5" r="2" fill="#F5C842"></circle>
-						</svg>
-						Seguimiento de Carga
-					</a>
-				</li>
-			</ul>
+					<li class="nav-cta-mobile">
+						<a href="#seguimiento" class="btn-tracking">
+							Seguimiento de Carga
+						</a>
+					</li>
+				</ul>
+			</nav>
 
 			<a id="header-tracking-btn" href="http://45.232.151.188:8081/consultacarga/" class="header-cta"
 				target="_blank" rel="noopener noreferrer">
-				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-					<path d="M1 3.5h12v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-8z" stroke="white" stroke-width="1.3"></path>
-					<path d="M1 3.5l6 4 6-4" stroke="white" stroke-width="1.3"></path>
-					<path d="M4 1h6" stroke="white" stroke-width="1.3" stroke-linecap="round"></path>
-					<circle cx="10.5" cy="3.5" r="2" fill="#F5C842"></circle>
-				</svg>
 				Seguimiento de Carga
 			</a>
 		</div>
 	</header>
+
+	<main id="main-content">

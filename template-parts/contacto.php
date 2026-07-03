@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <section id="contacto" style="padding:112px 36px 100px;background:#0A2618;">
-	<div style="max-width:780px;margin:0 auto;">
+	<div class="container">
 		<div data-reveal="" style="display:flex;flex-direction:column;gap:10px;margin-bottom:36px;transition:opacity 0.65s ease,transform 0.65s ease;">
 			<span style="font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C4941A;">Contacto</span>
 			<h2 style="font-size:48px;font-weight:700;letter-spacing:-0.028em;color:white;line-height:1.05;">Escríbenos</h2>
@@ -82,21 +82,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<div style="display:flex;flex-direction:column;gap:16px;">
 						<div>
-							<label style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Nombre Completo</label>
-							<input type="text" name="nombre_completo" placeholder="Ej. Juan Pérez García" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
+							<label for="nombre_completo" style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Nombre Completo</label>
+							<input type="text" id="nombre_completo" name="nombre_completo" placeholder="Ej. Juan Pérez García" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
 						</div>
 						<div>
-							<label style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Domicilio</label>
-							<input type="text" name="domicilio" placeholder="Dirección completa" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
+							<label for="domicilio" style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Domicilio</label>
+							<input type="text" id="domicilio" name="domicilio" placeholder="Dirección completa" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
 						</div>
 						<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:16px;">
 							<div>
-								<label style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Documento de Identidad (DNI/CE/RUC)</label>
-								<input type="text" name="documento_identidad" placeholder="Número de documento" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
+								<label for="documento_identidad" style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Documento de Identidad (DNI/CE/RUC)</label>
+								<input type="text" id="documento_identidad" name="documento_identidad" placeholder="Número de documento" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
 							</div>
 							<div>
-								<label style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Teléfono / E-mail</label>
-								<input type="text" name="contacto" placeholder="Contacto directo" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
+								<label for="contacto_dato" style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Teléfono / E-mail</label>
+								<input type="text" id="contacto_dato" name="contacto" placeholder="Contacto directo" required style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'" />
 							</div>
 						</div>
 					</div>
@@ -120,8 +120,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 						</div>
 						<div>
-							<label style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Descripción del Producto / Servicio</label>
-							<textarea name="descripcion_bien" placeholder="Brinde detalles del bien contratado..." required style="width:100%;min-height:120px;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;resize:vertical;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"></textarea>
+							<label for="descripcion_bien" style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Descripción del Producto / Servicio</label>
+							<textarea id="descripcion_bien" name="descripcion_bien" placeholder="Brinde detalles del bien contratado..." required style="width:100%;min-height:120px;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;resize:vertical;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"></textarea>
 						</div>
 					</div>
 				</div>
@@ -144,8 +144,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 						</div>
 						<div>
-							<label style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Detalle de lo ocurrido</label>
-							<textarea name="detalle_reclamo" placeholder="Explique detalladamente el motivo de su reclamación..." required style="width:100%;min-height:150px;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;resize:vertical;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"></textarea>
+							<label for="detalle_reclamo" style="display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;">Detalle de lo ocurrido</label>
+							<textarea id="detalle_reclamo" name="detalle_reclamo" placeholder="Explique detalladamente el motivo de su reclamación..." required style="width:100%;min-height:150px;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:15.5px;color:white;outline:none;resize:vertical;transition:border-color 0.2s;box-sizing:border-box;" onfocus="this.style.borderColor='#C4941A'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"></textarea>
 						</div>
 
 						<div style="background:rgba(255,255,255,0.05);padding:16px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);margin-top:8px;">

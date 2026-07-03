@@ -7,13 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<footer style="background:#071810;border-top:1px solid rgba(255,255,255,0.06);padding:48px 36px 28px;">
-	<div style="max-width:1760px;margin:0 auto;display:flex;flex-direction:column;gap:36px;">
+	</main>
+
+	<footer style="background:#071810;border-top:1px solid rgba(255,255,255,0.06);padding:48px 36px 28px;">
+	<div class="container" style="display:flex;flex-direction:column;gap:36px;">
 		<div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;" class="r-footer">
 
 			<div style="display:flex;flex-direction:column;gap:16px;">
 				<div style="display:flex;align-items:center;gap:10px;">
-					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/LOGO COPAM.png' ); ?>" alt="COPAM Logo" style="height:36px;width:auto;" />
+					<?php copam_render_logo( 36 ); ?>
 				</div>
 				<p style="font-size:15.5px;color:rgba(255,255,255,0.38);line-height:1.7;max-width:240px;">
 					Concesionaria del terminal portuario fluvial de Yurimaguas, bajo regulación del Estado peruano.
@@ -60,16 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					Canal de Integridad y Denuncias
 				</a>
 			</div>
-			<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-				<p style="font-size:14px;color:rgba(255,255,255,0.25);">© <?php echo date('Y'); ?> Concesionaria Puerto Amazonas S.A. – COPAM. Todos los derechos reservados.</p>
-				<div style="display:flex;gap:16px;align-items:center;">
-					<span style="font-size:13.5px;font-weight:600;color:rgba(255,255,255,0.2);letter-spacing:0.06em;">Regulado por</span>
-					<span style="font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0.05em;">OSITRAN</span>
-					<span style="font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0.05em;">SUNAT</span>
-					<span style="font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0.05em;">INDECOPI</span>
-					<span style="font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0.05em;">MTC</span>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 </footer>

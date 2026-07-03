@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <section id="operaciones" style="padding:112px 36px;background:white;">
-	<div style="max-width:1760px;margin:0 auto;">
+	<div class="container">
 
 		<div data-reveal="" style="display:flex;flex-direction:column;gap:10px;margin-bottom:52px;transition:opacity 0.65s ease,transform 0.65s ease;">
 			<span style="font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#B34A20;">OSITRAN · Reglamentos</span>

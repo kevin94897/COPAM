@@ -21,6 +21,12 @@ get_header();
 <section style="padding:64px 36px 112px;background:#F5F1EB;">
 	<div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
 
+		<?php if ( function_exists( 'rank_math_the_breadcrumbs' ) ) : ?>
+			<div style="font-size:14px;color:#7A7468;">
+				<?php rank_math_the_breadcrumbs(); ?>
+			</div>
+		<?php endif; ?>
+
 		<div style="display:flex;flex-direction:column;gap:12px;">
 			<p style="font-size:17px;color:#4A5240;line-height:1.7;">
 				Este sitio, operado por Concesionaria Puerto Amazonas S.A. (COPAM), utiliza una cantidad mínima de cookies y almacenamiento local, estrictamente necesarios para su funcionamiento. A continuación explicamos qué usamos y por qué.

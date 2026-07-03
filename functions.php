@@ -12,6 +12,21 @@ define( 'COPAM_THEME_VERSION', '1.0.0' );
 function copam_theme_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
+	add_theme_support(
+		'html5',
+		array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' )
+	);
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 40,
+			'width'       => 224,
+			'flex-height' => true,
+			'flex-width'  => true,
+			'header-text' => array(),
+		)
+	);
 }
 add_action( 'after_setup_theme', 'copam_theme_setup' );
 
@@ -28,18 +43,21 @@ function copam_enqueue_assets() {
 
 	wp_enqueue_script( 'copam-main', get_template_directory_uri() . '/assets/js/main.js', array(), COPAM_THEME_VERSION, true );
 
-	wp_enqueue_script( 'copam-embla', get_template_directory_uri() . '/assets/js/embla-carousel.min.js', array(), COPAM_THEME_VERSION, true );
-	wp_enqueue_script( 'copam-carousels', get_template_directory_uri() . '/assets/js/carousels.js', array( 'copam-embla' ), COPAM_THEME_VERSION, true );
+	// Carousels, tabs and the multi-step reclamo form only exist on the front page.
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'copam-embla', get_template_directory_uri() . '/assets/js/embla-carousel.min.js', array(), COPAM_THEME_VERSION, true );
+		wp_enqueue_script( 'copam-carousels', get_template_directory_uri() . '/assets/js/carousels.js', array( 'copam-embla' ), COPAM_THEME_VERSION, true );
 
-	wp_enqueue_script( 'copam-reclamos-form', get_template_directory_uri() . '/assets/js/reclamos-form.js', array(), COPAM_THEME_VERSION, true );
-	wp_localize_script(
-		'copam-reclamos-form',
-		'copamReclamoData',
-		array(
-			'actionUrl' => admin_url( 'admin-post.php' ),
-			'nonce'     => wp_create_nonce( 'copam_reclamo_submit' ),
-		)
-	);
+		wp_enqueue_script( 'copam-reclamos-form', get_template_directory_uri() . '/assets/js/reclamos-form.js', array(), COPAM_THEME_VERSION, true );
+		wp_localize_script(
+			'copam-reclamos-form',
+			'copamReclamoData',
+			array(
+				'actionUrl' => admin_url( 'admin-post.php' ),
+				'nonce'     => wp_create_nonce( 'copam_reclamo_submit' ),
+			)
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'copam_enqueue_assets' );
 

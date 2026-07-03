@@ -19,11 +19,13 @@ Text Domain: copam
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   font-family: var(--copam-font-sans);
   font-size: 16px;
   color: var(--copam-text);
@@ -44,6 +46,45 @@ a {
   display: none !important;
 }
 
+/* ─── Shared width container, matches the header's inner max-width ── */
+.container {
+  max-width: 1760px;
+  margin: 0 auto;
+}
+
+/* ─── Stats strip (replaces Stats.astro's Tailwind utilities) ──── */
+.r-stats {
+  padding: 0 36px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.r-stats__item {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-right: 1px solid #E2DDD5;
+}
+
+.r-stats__item:last-child {
+  border-right: none;
+}
+
+.r-stats__value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1C5E35;
+  letter-spacing: -0.03em;
+}
+
+.r-stats__label {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: #7A7468;
+  letter-spacing: 0.02em;
+}
+
 /* ─── Site header (replaces Header.astro's Tailwind utilities) ──── */
 .site-header {
   position: fixed;
@@ -60,12 +101,12 @@ a {
 }
 
 .site-header__inner {
-  max-width: 1760px;
-  margin: 0 auto;
+  width: 100%;
   padding: 0 24px;
-  height: 66px;
+  height: 56px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 24px;
 }
 
@@ -77,7 +118,7 @@ a {
 }
 
 .site-logo img {
-  height: 40px;
+  height: 32px;
   width: auto;
 }
 
@@ -115,7 +156,7 @@ a {
 
 .main-nav a {
   display: block;
-  font-size: 16px;
+  font-size: 14.5px;
   font-weight: 500;
   color: var(--copam-gray-11);
   padding: 8px 12px;
@@ -134,10 +175,10 @@ a {
   justify-content: center;
   gap: 8px;
   background: var(--copam-terracotta);
-  color: white;
-  font-size: 15.5px;
+  color: white !important;
+  font-size: 14px;
   font-weight: 700;
-  padding: 10px 20px;
+  padding: 9px 18px;
   border-radius: 8px;
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -180,9 +221,9 @@ a {
     gap: 8px;
     background: var(--copam-terracotta);
     color: white;
-    font-size: 15.5px;
-    font-weight: 700;
-    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 18px;
     border-radius: 8px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -316,6 +357,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -325,7 +367,7 @@ a {
 }
 
 .hero__badge {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
@@ -337,6 +379,12 @@ a {
   color: rgba(255, 255, 255, 0.8);
   width: fit-content;
   animation: fadeUp 0.7s ease 0.08s forwards;
+}
+
+@media (min-width: 768px) {
+  .hero__badge {
+    display: flex;
+  }
 }
 
 .hero__badge-link {
@@ -380,8 +428,8 @@ a {
 
 .hero__lede {
   animation: fadeUp 0.7s ease 0.38s forwards;
-  font-size: 18px;
-  line-height: 1.75;
+  font-size: 16px;
+  /* line-height: 1.75; */
   color: rgba(255, 255, 255, 0.65);
   max-width: 820px;
   margin: 0;
@@ -438,10 +486,18 @@ a {
   background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 32px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .hero__card {
+    padding: 32px;
+    gap: 24px;
+  }
 }
 
 .hero__card-eyebrow {
@@ -472,14 +528,20 @@ a {
 }
 
 .hero__card-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  background: rgba(28, 94, 53, 0.3);
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hero__card-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: rgba(28, 94, 53, 0.3);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .hero__card-row-label {
@@ -667,7 +729,7 @@ a {
   }
   footer { padding-left: 18px !important; padding-right: 18px !important; }
   section h2 { font-size: 28px !important; }
-  .r-stats > div { border-right: none !important; border-bottom: 1px solid #E2DDD5; }
+  .r-stats__item { border-right: none !important; border-bottom: 1px solid #E2DDD5; }
 }
 @media (max-width: 480px) {
   section h2 { font-size: 24px !important; }

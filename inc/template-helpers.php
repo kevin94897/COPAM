@@ -8,6 +8,45 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Render the site logo, using the logo uploaded via Apariencia → Personalizar
+ * → Identidad del sitio (add_theme_support( 'custom-logo' ) in functions.php)
+ * when one is set, falling back to the bundled COPAM logo otherwise.
+ *
+ * Width/height on the fallback are hardcoded to the bundled PNG's real
+ * 5409×966 aspect ratio (to avoid CLS); a Customizer-uploaded logo gets its
+ * own real dimensions from wp_get_attachment_image(), so it won't distort
+ * regardless of its aspect ratio.
+ *
+ * @param int $height Render height in pixels, matching the call site's CSS.
+ */
+function copam_render_logo( $height ) {
+	$custom_logo_id = get_theme_mod( 'custom_logo' );
+
+	if ( $custom_logo_id ) {
+		echo wp_get_attachment_image(
+			$custom_logo_id,
+			'full',
+			false,
+			array(
+				'alt'      => get_bloginfo( 'name' ) . ' Logo',
+				'decoding' => 'async',
+				'style'    => sprintf( 'height:%dpx;width:auto;', $height ),
+			)
+		);
+		return;
+	}
+
+	$width = (int) round( $height * 5409 / 966 );
+	printf(
+		'<img src="%1$s" alt="%2$s" width="%3$d" height="%4$d" decoding="async" style="height:%4$dpx;width:auto;" />',
+		esc_url( get_template_directory_uri() . '/assets/images/LOGO COPAM.png' ),
+		esc_attr( get_bloginfo( 'name' ) . ' Logo' ),
+		$width,
+		$height
+	);
+}
+
+/**
  * Render a CTA link matching the original Astro ButtonPrimary/ButtonSecondary components.
  *
  * @param string $href    Link target.
