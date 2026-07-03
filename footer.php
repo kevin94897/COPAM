@@ -62,7 +62,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					Canal de Integridad y Denuncias
 				</a>
 			</div>
-			
+
+			<div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+				<p style="font-size:14px;color:rgba(255,255,255,0.25);">© <?php echo date( 'Y' ); ?> Concesionaria Puerto Amazonas S.A. – COPAM. Todos los derechos reservados.</p>
+
+			</div>
 		</div>
 	</div>
 </footer>
