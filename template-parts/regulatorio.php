@@ -1,9 +1,13 @@
 <?php
 /**
  * Regulatorio section — replaces the former "Zona Clientes" carousel.
- * Documents are grouped into 4 tabs (Tarifario, Documentos Comerciales,
- * Depósito Comercial, Servicios Prestados), matching the IA handed off
- * for this restructure. Tab switching is handled by assets/js/tabs.js.
+ *
+ * Tarifario and RETA (the two documents OSITRAN's RETA regulation requires
+ * to be published "de forma destacada, individualizada y de acceso directo")
+ * are rendered always-visible, above the tabs — not behind a tab click.
+ * The remaining categories (Documentos Comerciales, Depósito Comercial,
+ * Servicios Prestados) stay grouped into tabs. Tab switching is handled by
+ * assets/js/carousels.js.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,62 +25,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 		</div>
 
+		<!-- Tarifas y precios vigentes: publicados de forma destacada, individualizada y de
+		     acceso directo (sin clics de navegación), conforme lo exige el RETA de OSITRAN. -->
+		<div data-reveal="" style="margin-bottom:40px;transition:opacity 0.65s ease 0.1s,transform 0.65s ease 0.1s;">
+			<h3 style="font-size:20px;font-weight:700;color:#1C2118;margin-bottom:6px;">Tarifas y Precios Vigentes</h3>
+			<p style="font-size:15.5px;color:#6B6558;line-height:1.6;max-width:760px;margin-bottom:18px;">Tarifario de Servicios Portuarios y Reglamento de Tarifas y Precios (RETA) actualmente en vigencia, de acceso directo conforme a la normativa de OSITRAN.</p>
+			<div class="r-docs" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+				<?php copam_vigente_doc_card( 'Tarifario de Servicios Portuarios', 'En vigencia desde: 16 de junio de 2026', 'https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQCfEzb0XobATK5pecfsKdO_ASO6Bimz6qri6LQ2Pa3w1iM?e=4Jt4mX' ); ?>
+				<?php copam_vigente_doc_card( 'Reglamento de Tarifas y Precios — RETA COPAM', 'Versión 5.3 · Vigente desde: junio de 2026', 'https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQBVLArkDq6mQr-GYvJOxdIpAXDSdUNh-3lIndyFPPvnjK4?e=0Rk85z' ); ?>
+			</div>
+			<?php
+			copam_historico_details(
+				array(
+					array(
+						'title'  => 'Tarifario de Servicios Portuarios',
+						'status' => 'Histórico, vigente hasta el 15.06.2026.',
+						'href'   => 'https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQCV272obm1-T6OgFOjfYjSiAcpliAVk8Q9dcmkF9Glorl8?e=dqUTTd',
+					),
+					array(
+						'title'  => 'RETA COPAM V5.2',
+						'status' => 'Histórico, sustituido por versión vigente.',
+						'href'   => 'https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQD9zo9Dhsl2Q4USJH2UNVWbAeHi5kDfUvKpxsA8iEul6xg?e=3s9lhs',
+					),
+				)
+			);
+			?>
+		</div>
+
 		<div class="reg-tabs" data-reveal="" style="transition:opacity 0.65s ease 0.1s,transform 0.65s ease 0.1s;">
 
 			<div class="reg-tabs__nav" role="tablist" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
-				<button type="button" class="reg-tabs__btn is-active" data-tab="tarifario" role="tab" aria-selected="true">Tarifario</button>
-				<button type="button" class="reg-tabs__btn" data-tab="comerciales" role="tab" aria-selected="false">Documentos Comerciales</button>
+				<button type="button" class="reg-tabs__btn is-active" data-tab="comerciales" role="tab" aria-selected="true">Documentos Comerciales</button>
 				<button type="button" class="reg-tabs__btn" data-tab="deposito" role="tab" aria-selected="false">Depósito Comercial</button>
 				<!-- <button type="button" class="reg-tabs__btn" data-tab="servicios-prestados" role="tab" aria-selected="false">Servicios Prestados</button> -->
 			</div>
 
 			<div class="reg-tabs__panels">
 
-				<div class="reg-tabs__panel is-active" data-panel="tarifario" role="tabpanel">
+				<div class="reg-tabs__panel is-active" data-panel="comerciales" role="tabpanel">
 					<div class="r-docs" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-						<a href="https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQCfEzb0XobATK5pecfsKdO_ASO6Bimz6qri6LQ2Pa3w1iM?e=4Jt4mX" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:white;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-							<span style="font-size:13px;font-weight:700;color:#B34A20;background:#FEF0EA;padding:2px 7px;border-radius:3px;flex-shrink:0;">PDF</span>
-							<span style="font-size:16px;color:#1C2118;font-weight:500;flex:1;">Tarifario 16.06.2026</span>
-							<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v8M3.5 6.5L6 9l2.5-2.5" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 11h10" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round"></path></svg>
-						</a>
-						<a href="https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQCV272obm1-T6OgFOjfYjSiAcpliAVk8Q9dcmkF9Glorl8?e=dqUTTd" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:white;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-							<span style="font-size:13px;font-weight:700;color:#B34A20;background:#FEF0EA;padding:2px 7px;border-radius:3px;flex-shrink:0;">PDF</span>
-							<span style="font-size:16px;color:#1C2118;font-weight:500;flex:1;">Tarifario 01.01.2026</span>
-							<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v8M3.5 6.5L6 9l2.5-2.5" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 11h10" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round"></path></svg>
-						</a>
-					</div>
-				</div>
-
-				<div class="reg-tabs__panel" data-panel="comerciales" role="tabpanel" hidden>
-					<div class="r-docs" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-						<a href="https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQD64KjgzT0VTb5K1LcOxaYXAT1QThsfapfrRhbkp_0VaEk?e=PGHM2t" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:white;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-							<span style="font-size:13px;font-weight:700;color:#B34A20;background:#FEF0EA;padding:2px 7px;border-radius:3px;flex-shrink:0;">PDF</span>
-							<span style="font-size:16px;color:#1C2118;font-weight:500;flex:1;">Política Comercial COPAM</span>
-							<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v8M3.5 6.5L6 9l2.5-2.5" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 11h10" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round"></path></svg>
-						</a>
-						<a href="https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQBVLArkDq6mQr-GYvJOxdIpAXDSdUNh-3lIndyFPPvnjK4?e=0Rk85z" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:white;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-							<span style="font-size:13px;font-weight:700;color:#B34A20;background:#FEF0EA;padding:2px 7px;border-radius:3px;flex-shrink:0;">PDF</span>
-							<span style="font-size:16px;color:#1C2118;font-weight:500;flex:1;">Reglamento de Tarifario y Precios 2025 V5.3</span>
-							<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v8M3.5 6.5L6 9l2.5-2.5" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 11h10" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round"></path></svg>
-						</a>
-						<a href="https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQD9zo9Dhsl2Q4USJH2UNVWbAeHi5kDfUvKpxsA8iEul6xg?e=3s9lhs" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:white;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-							<span style="font-size:13px;font-weight:700;color:#B34A20;background:#FEF0EA;padding:2px 7px;border-radius:3px;flex-shrink:0;">PDF</span>
-							<span style="font-size:16px;color:#1C2118;font-weight:500;flex:1;">Reglamento de Tarifario y Precios 2025 V5.2</span>
-							<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v8M3.5 6.5L6 9l2.5-2.5" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 11h10" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round"></path></svg>
-						</a>
+						<?php copam_vigente_doc_card( 'Política Comercial y Descuentos', 'Vigente desde: 07 de octubre de 2020 · Vigencia: 2 años', 'https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQD64KjgzT0VTb5K1LcOxaYXAT1QThsfapfrRhbkp_0VaEk?e=PGHM2t' ); ?>
 					</div>
 				</div>
 
 				<div class="reg-tabs__panel" data-panel="deposito" role="tabpanel" hidden>
 					<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;" class="r-two">
 
-						<div style="background:white;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+						<div style="background:white;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
 							<h4 style="font-size:16px;font-weight:600;color:#1C2118;margin-bottom:4px;">Documentos de Depósito Comercial</h4>
-							<a href="https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQDbjw-tHVK3TpukeIBbl9YgAR__bRjqh671E7_iyoHolxY?e=1Jasjb" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:7px;background:#F5F1EB;">
-								<span style="font-size:13px;font-weight:700;color:#B34A20;background:#FEF0EA;padding:2px 7px;border-radius:3px;flex-shrink:0;">PDF</span>
-								<span style="font-size:16px;color:#1C2118;font-weight:500;flex:1;">Tarifas Depósito Temporal</span>
-								<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1v7M3 5.5l2.5 2.5L8 5.5" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 10h9" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round"></path></svg>
-							</a>
+							<?php copam_vigente_doc_card( 'Tarifas del Depósito Temporal Fluvial', 'Vigente desde: 23 de octubre de 2025', 'https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQDbjw-tHVK3TpukeIBbl9YgAR__bRjqh671E7_iyoHolxY?e=1Jasjb' ); ?>
 							<a href="https://concesionariapuertoamazonas.sharepoint.com/:b:/g/IQDHWAovEvS3TLTwk-BIUgVZAWHFQn6w-cTT_OzblJEhgFk?e=W6OkfT" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:7px;background:#F5F1EB;">
 								<span style="font-size:13px;font-weight:700;color:#B34A20;background:#FEF0EA;padding:2px 7px;border-radius:3px;flex-shrink:0;">PDF</span>
 								<span style="font-size:16px;color:#1C2118;font-weight:500;flex:1;">Formulario Reclamaciones</span>

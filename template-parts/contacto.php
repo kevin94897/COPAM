@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 		</div>
 
-		<div data-reveal="" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:22px 24px;margin-bottom:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;transition:opacity 0.65s ease 0.1s,transform 0.65s ease 0.1s;" class="r-form-grid">
+		<div data-reveal="" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:22px 24px;margin-bottom:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px 16px;transition:opacity 0.65s ease 0.1s,transform 0.65s ease 0.1s;" class="r-form-grid">
 			<div style="display:flex;flex-direction:column;gap:3px;">
 				<span style="font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);">Correo de Atención</span>
 				<span style="font-size:15.5px;font-weight:600;line-height:1.4;"><a href="mailto:servicioclientes@copam.com.pe" style="color:white;">servicioclientes@copam.com.pe</a></span>

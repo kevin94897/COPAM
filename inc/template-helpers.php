@@ -71,3 +71,78 @@ function copam_legal_page_url( $template_filename ) {
 
 	return $cache[ $template_filename ];
 }
+
+/**
+ * Render a card for a regulatory document currently in force, so visitors
+ * and OSITRAN reviewers can tell at a glance which version applies today.
+ *
+ * @param string $title Document title.
+ * @param string $meta  Optional meta line, e.g. 'En vigencia desde: 16 de junio de 2026'.
+ * @param string $href  Download link.
+ */
+function copam_vigente_doc_card( $title, $meta, $href ) {
+	printf(
+		'<div style="background:white;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border:1px solid #E5E0D3;">
+			<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<h4 style="font-size:16px;font-weight:600;color:#1C2118;margin:0;">%1$s</h4>
+				<span style="font-size:11px;font-weight:700;letter-spacing:0.06em;color:#1C5E35;background:#EDF5F0;padding:3px 9px;border-radius:20px;flex-shrink:0;white-space:nowrap;">VIGENTE</span>
+			</div>
+			%2$s
+			<a href="%3$s" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:14.5px;font-weight:600;color:#1C5E35;width:fit-content;">
+				<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1v7M3 5.5l2.5 2.5L8 5.5" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 10h9" stroke="#1C5E35" stroke-width="1.4" stroke-linecap="round"></path></svg>
+				Descargar PDF
+			</a>
+		</div>',
+		esc_html( $title ),
+		$meta ? sprintf( '<p style="font-size:14px;color:#7A7468;margin:0;">%s</p>', esc_html( $meta ) ) : '',
+		esc_url( $href )
+	);
+}
+
+/**
+ * Render one row inside the "Historial documental" disclosure — a document
+ * that has been superseded but is kept reachable for historical consultation.
+ *
+ * @param string $title  Document title.
+ * @param string $status Status line, e.g. 'Histórico, vigente hasta el 15.06.2026.'.
+ * @param string $href   Download link.
+ */
+function copam_historico_doc_row( $title, $status, $href ) {
+	printf(
+		'<a href="%3$s" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:white;border-radius:8px;">
+			<div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+				<span style="font-size:15.5px;color:#4A5240;font-weight:600;">%1$s</span>
+				<span style="font-size:13.5px;color:#9B9285;">%2$s</span>
+			</div>
+			<svg width="11" height="11" viewBox="0 0 11 11" fill="none" style="flex-shrink:0;"><path d="M5.5 1v7M3 5.5l2.5 2.5L8 5.5" stroke="#9B9285" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 10h9" stroke="#9B9285" stroke-width="1.4" stroke-linecap="round"></path></svg>
+		</a>',
+		esc_html( $title ),
+		esc_html( $status ),
+		esc_url( $href )
+	);
+}
+
+/**
+ * Render the "Historial documental" block: a heading plus a closed accordion
+ * ("Versiones históricas y documentos sustituidos") listing superseded
+ * documents with a disclaimer, so the current version stands out while the
+ * historical trail stays available for an eventual OSITRAN review.
+ *
+ * @param array $items Array of ['title' => ..., 'status' => ..., 'href' => ...].
+ */
+function copam_historico_details( array $items ) {
+	if ( ! $items ) {
+		return;
+	}
+	echo '<div style="margin-top:8px;">';
+	echo '<h5 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#9B9285;margin:0 0 8px;">Historial documental</h5>';
+	echo '<details>';
+	echo '<summary style="cursor:pointer;font-size:15px;font-weight:600;color:#1C2118;padding:12px 14px;background:#F5F1EB;border-radius:8px;">Versiones históricas y documentos sustituidos</summary>';
+	echo '<div style="display:flex;flex-direction:column;gap:10px;padding:14px 2px 2px;">';
+	echo '<p style="font-size:14px;color:#7A7468;line-height:1.6;margin:0;">Estos documentos se publican únicamente para fines de consulta histórica. No son aplicables a servicios solicitados a partir de la fecha de entrada en vigencia del documento actual.</p>';
+	foreach ( $items as $item ) {
+		copam_historico_doc_row( $item['title'], $item['status'], $item['href'] );
+	}
+	echo '</div></details>';
+	echo '</div>';
+}

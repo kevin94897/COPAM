@@ -23,8 +23,9 @@ get_header();
 
 		<div style="display:flex;flex-direction:column;gap:12px;">
 			<p style="font-size:17px;color:#4A5240;line-height:1.7;">
-				Concesionaria Puerto Amazonas S.A. (en adelante, "COPAM" o "la Empresa"), con domicilio en Via de Evitamiento Km 0, Caserío Santa Rosa (Río Huallaga), Yurimaguas, Loreto, Perú, es responsable del tratamiento de los datos personales que usted nos proporciona a través de este sitio web, conforme a la Ley N° 29733, Ley de Protección de Datos Personales, y su Reglamento aprobado por el Decreto Supremo N° 003-2013-JUS.
-			</p>
+COPAM trata los datos personales conforme a la Ley N.° 29733, Ley de Protección de Datos
+Personales, y su Reglamento aprobado por Decreto Supremo N.° 016-2024-JUS.
+</p>
 		</div>
 
 		<div style="display:flex;flex-direction:column;gap:14px;">
