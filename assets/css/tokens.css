@@ -1,0 +1,55 @@
+/*
+ * COPAM design tokens — v1 / interim.
+ * Normalized from the Astro landing. See DESIGN-SYSTEM.md at the repo root
+ * for the full reference. These variables back the theme's own CSS only;
+ * the ported markup keeps its original inline styles unchanged.
+ */
+:root {
+  /* Brand greens */
+  --copam-green: #1C5E35;
+  --copam-green-hover: #164A2A;
+  --copam-green-dark: #0A2618;
+  --copam-green-darkest: #071810;
+
+  /* Pale green tints */
+  --copam-green-tint-1: #D6EAE0;
+  --copam-green-tint-2: #EDF5F0;
+  --copam-green-tint-3: #F4F8F5;
+  --copam-green-tint-4: #C8DDD0;
+  --copam-green-tint-5: #B8DEC6;
+  --copam-green-tint-6: #6B8F73;
+
+  /* Gold / terracotta accents */
+  --copam-gold: #C4941A;
+  --copam-terracotta: #B34A20;
+  --copam-terracotta-hover: #9B3D18;
+  --copam-yellow-1: #F5C842;
+  --copam-yellow-2: #FDD147;
+  --copam-terracotta-tint-1: #FEF0EA;
+  --copam-terracotta-tint-2: #F2C9B8;
+  --copam-gold-tint: #FDF7E8;
+
+  /* Backgrounds */
+  --copam-bg: #F5F1EB;
+  --copam-header-bg: #FFFDF8;
+
+  /* Text */
+  --copam-text: #1C2118;
+
+  /* Neutrals / grays */
+  --copam-gray-1: #E2DDD5;
+  --copam-gray-2: #E5E0D3;
+  --copam-gray-3: #EDE9E2;
+  --copam-gray-4: #EBEBEB;
+  --copam-gray-5: #D4CEBC;
+  --copam-gray-6: #C6BCA9;
+  --copam-gray-7: #6B6558;
+  --copam-gray-8: #7A7468;
+  --copam-gray-9: #9B9285;
+  --copam-gray-10: #8F8A80;
+  --copam-gray-11: #4A5240;
+  --copam-gray-12: #9B6B55;
+
+  /* Font */
+  --copam-font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}

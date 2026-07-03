@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependencies (if build tooling is added later)
+node_modules/
+vendor/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local reference files (not theme source)
+*.xlsx
+*.xls
