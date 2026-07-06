@@ -72,6 +72,46 @@ function copam_trim_head() {
 }
 add_action( 'init', 'copam_trim_head' );
 
+/**
+ * SEO: meta description + canonical URL. Google was auto-generating the
+ * search snippet and treating www / non-www as separate properties because
+ * neither tag existed.
+ */
+function copam_seo_meta() {
+	if ( is_front_page() ) {
+		echo '<meta name="description" content="COPAM S.A. opera el Terminal Portuario Fluvial de Yurimaguas bajo concesión del Estado peruano: servicios portuarios, tarifario, reglamentos OSITRAN y atención al usuario." />' . "\n";
+	}
+	echo '<link rel="canonical" href="' . esc_url( home_url( '/' ) ) . '" />' . "\n";
+}
+add_action( 'wp_head', 'copam_seo_meta', 1 );
+
+/**
+ * Collapse stale traffic from the site's previous (non-WordPress) catalog
+ * structure — ?detail/12345-style URLs still indexed by Google — and force
+ * the bare (non-www) host, so search engines consolidate on one canonical
+ * URL instead of indexing the homepage content under dozens of variants.
+ */
+function copam_legacy_redirects() {
+	if ( is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
+		return;
+	}
+
+	$host = isset( $_SERVER['HTTP_HOST'] ) ? strtolower( $_SERVER['HTTP_HOST'] ) : '';
+	$uri  = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '/';
+
+	if ( 0 === strpos( $host, 'www.' ) ) {
+		$scheme = is_ssl() ? 'https' : 'http';
+		wp_redirect( $scheme . '://' . substr( $host, 4 ) . $uri, 301 );
+		exit;
+	}
+
+	if ( isset( $_SERVER['QUERY_STRING'] ) && false !== strpos( $_SERVER['QUERY_STRING'], 'detail/' ) ) {
+		wp_safe_redirect( home_url( '/' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'copam_legacy_redirects' );
+
 require get_template_directory() . '/inc/template-helpers.php';
 require get_template_directory() . '/inc/reclamos-cpt.php';
 require get_template_directory() . '/inc/reclamos-mail.php';

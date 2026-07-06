@@ -102,11 +102,11 @@ a {
 
 .site-header__inner {
   width: 100%;
-  padding: 0 24px;
+  padding: 0 15px;
   height: 56px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 24px;
 }
 
@@ -130,6 +130,13 @@ a {
   cursor: pointer;
   padding: 0;
   line-height: 0;
+}
+
+/* The <nav> wrapping #main-nav must not count as its own flex item —
+   otherwise it leaves an invisible gap that pushes .menu-toggle off
+   the right edge while its child <ul> is display:none on mobile. */
+.site-header__inner > nav {
+  display: contents;
 }
 
 .menu-toggle svg {
@@ -190,11 +197,13 @@ a {
 
 @media (min-width: 768px) {
   .site-header__inner {
-    padding: 0 36px;
+    /* padding: 0 36px; */
   }
+
   .menu-toggle {
     display: none;
   }
+
   .main-nav {
     display: flex !important;
     flex-direction: row;
@@ -209,12 +218,15 @@ a {
     justify-content: center;
     gap: 4px;
   }
+
   .main-nav a {
     padding: 6px 12px;
   }
+
   .nav-cta-mobile {
     display: none;
   }
+
   .header-cta {
     display: flex;
     align-items: center;
@@ -268,6 +280,7 @@ a {
 }
 
 @media (min-width: 640px) {
+
   .btn-primary,
   .btn-secondary {
     width: auto;
@@ -413,13 +426,21 @@ a {
 }
 
 @media (min-width: 640px) {
-  .hero h1 { font-size: 48px; }
+  .hero h1 {
+    font-size: 48px;
+  }
 }
+
 @media (min-width: 768px) {
-  .hero h1 { font-size: 72px; }
+  .hero h1 {
+    font-size: 72px;
+  }
 }
+
 @media (min-width: 1024px) {
-  .hero h1 { font-size: 84px; }
+  .hero h1 {
+    font-size: 84px;
+  }
 }
 
 .hero h1 .accent {
@@ -436,7 +457,9 @@ a {
 }
 
 @media (min-width: 768px) {
-  .hero__lede { font-size: 20px; }
+  .hero__lede {
+    font-size: 20px;
+  }
 }
 
 .hero__ctas {
@@ -604,13 +627,23 @@ a {
 }
 
 @media (min-width: 640px) {
-  .svc-embla__slide { flex: 0 0 calc(50% - 8px); }
-  .reg-embla__slide { flex: 0 0 calc(50% - 10px); }
+  .svc-embla__slide {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  .reg-embla__slide {
+    flex: 0 0 calc(50% - 10px);
+  }
 }
 
 @media (min-width: 1100px) {
-  .svc-embla__slide { flex: 0 0 calc(33.3333% - 11px); }
-  .reg-embla__slide { flex: 0 0 calc(33.3333% - 14px); }
+  .svc-embla__slide {
+    flex: 0 0 calc(33.3333% - 11px);
+  }
+
+  .reg-embla__slide {
+    flex: 0 0 calc(33.3333% - 14px);
+  }
 }
 
 .svc-prev:hover,
@@ -715,25 +748,81 @@ a {
 
 /* ─── Responsive (ported verbatim from src/styles/global.css) ──── */
 @media (max-width: 1100px) {
-  .r-docs { grid-template-columns: 1fr 1fr !important; }
-  .r-footer { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
-  .r-stats { grid-template-columns: 1fr 1fr !important; }
-}
-@media (max-width: 780px) {
-  .r-two, .r-docs, .r-stats, .r-footer, .r-form-grid {
-    grid-template-columns: 1fr !important;
+  .r-docs {
+    grid-template-columns: 1fr 1fr !important;
   }
-  #regulatorio, #operaciones, #servicios, #ositran, #reclamos, #contacto {
-    padding-top: 80px !important; padding-bottom: 80px !important;
-    padding-left: 18px !important; padding-right: 18px !important;
+
+  .r-footer {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px !important;
   }
-  footer { padding-left: 18px !important; padding-right: 18px !important; }
-  section h2 { font-size: 28px !important; }
-  .r-stats__item { border-right: none !important; border-bottom: 1px solid #E2DDD5; }
-}
-@media (max-width: 480px) {
-  section h2 { font-size: 24px !important; }
+
+  .r-stats {
+    grid-template-columns: 1fr 1fr !important;
+  }
 }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 780px) {
+
+  .r-two,
+  .r-docs,
+  .r-stats,
+  .r-footer,
+  .r-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #regulatorio,
+  #operaciones,
+  #servicios,
+  #ositran,
+  #reclamos,
+  #contacto {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  footer {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  section h2 {
+    font-size: 28px !important;
+  }
+
+  .r-stats__item {
+    border-right: none !important;
+    border-bottom: 1px solid #E2DDD5;
+  }
+}
+
+@media (max-width: 480px) {
+  section h2 {
+    font-size: 24px !important;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

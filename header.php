@@ -34,36 +34,39 @@ $copam_nav_links = array(
 	<?php wp_body_open(); ?>
 
 	<header id="main-header" class="site-header">
-		<div class="site-header__inner">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo">
-				<?php copam_render_logo( 32 ); ?>
-			</a>
+		<div class="container">
+			<div class="site-header__inner">
+				<a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
+					<?php copam_render_logo(32); ?>
+				</a>
 
-			<button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
-				<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
-					stroke-linejoin="round">
-					<path d="M4 6h16M4 12h16M4 18h16" />
-				</svg>
-			</button>
+				<button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+					<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+						stroke-linejoin="round">
+						<path d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+				</button>
 
-			<nav aria-label="Principal">
-				<ul id="main-nav" class="main-nav hidden">
-					<?php foreach ($copam_nav_links as $link): ?>
-						<li><a href="<?php echo esc_url($link['href']); ?>"><?php echo esc_html($link['label']); ?></a></li>
-					<?php endforeach; ?>
+				<nav aria-label="Principal">
+					<ul id="main-nav" class="main-nav hidden">
+						<?php foreach ($copam_nav_links as $link): ?>
+							<li><a href="<?php echo esc_url($link['href']); ?>"><?php echo esc_html($link['label']); ?></a>
+							</li>
+						<?php endforeach; ?>
 
-					<li class="nav-cta-mobile">
-						<a href="#seguimiento" class="btn-tracking">
-							Seguimiento de Carga
-						</a>
-					</li>
-				</ul>
-			</nav>
+						<li class="nav-cta-mobile">
+							<a href="#seguimiento" class="btn-tracking">
+								Seguimiento de Carga
+							</a>
+						</li>
+					</ul>
+				</nav>
 
-			<a id="header-tracking-btn" href="http://45.232.151.188:8081/consultacarga/" class="header-cta"
-				target="_blank" rel="noopener noreferrer">
-				Seguimiento de Carga
-			</a>
+				<a id="header-tracking-btn" href="http://45.232.151.188:8081/consultacarga/" class="header-cta"
+					target="_blank" rel="noopener noreferrer">
+					Seguimiento de Carga
+				</a>
+			</div>
 		</div>
 	</header>
 
